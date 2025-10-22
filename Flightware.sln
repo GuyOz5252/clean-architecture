@@ -1,5 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flightware.AppHost", "Flightware.AppHost\Flightware.AppHost.csproj", "{1F63D0DE-76D9-40A2-8300-73E90557774E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flightware.Api", "Flightware.Api\Flightware.Api.csproj", "{24F27192-5072-4CF2-908A-15B80BEDD101}"
