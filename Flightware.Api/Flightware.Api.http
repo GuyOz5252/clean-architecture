@@ -1,0 +1,6 @@
+@Flightware_Api_HostAddress = http://localhost:5153
+
+GET {{Flightware_Api_HostAddress}}/health
+Accept: application/json
+
+###
