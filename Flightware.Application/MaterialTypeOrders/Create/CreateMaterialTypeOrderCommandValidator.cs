@@ -4,9 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Flightware.Application.MaterialTypeOrders.Create;
 
-public class CreateMaterialTypeCommandValidator : AbstractValidator<CreateMaterialTypeOrderCommand>
+public class CreateMaterialTypeOrderCommandValidator : AbstractValidator<CreateMaterialTypeOrderCommand>
 {
-    public CreateMaterialTypeCommandValidator(IServiceProvider serviceProvider)
+    public CreateMaterialTypeOrderCommandValidator(IServiceProvider serviceProvider)
     {
         RuleFor(command => command)
             .Custom((command, context) =>

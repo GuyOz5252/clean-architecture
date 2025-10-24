@@ -2,7 +2,7 @@
 
 namespace Flightware.Application.MaterialTypeOrders.Create;
 
-public class CreateMaterialTypeRequestCommandHandler : ICommandHandler<CreateMaterialTypeOrderCommand, Guid>
+public class CreateMaterialTypeOrderCommandHandler : ICommandHandler<CreateMaterialTypeOrderCommand, Guid>
 {
     public async ValueTask<Result<Guid>> Handle(
         CreateMaterialTypeOrderCommand command,
