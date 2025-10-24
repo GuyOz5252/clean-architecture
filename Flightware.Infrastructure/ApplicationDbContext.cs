@@ -1,15 +1,14 @@
 ﻿using Flightware.Domain.Entities;
+using Flightware.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Flightware.Infrastructure;
 
 public class ApplicationDbContext : DbContext
 {
-    public DbSet<User> Users { get; init; }  
-    
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-    {
-    }
+    public DbSet<User> Users { get; init; }
+
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
