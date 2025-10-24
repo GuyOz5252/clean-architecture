@@ -10,6 +10,7 @@
         <PackageReference Include="Common.Core" />
         <PackageReference Include="FluentValidation" />
         <PackageReference Include="Mediator.Abstractions" />
+        <PackageReference Include="Microsoft.Extensions.Options" />
     </ItemGroup>
 
     <ItemGroup>

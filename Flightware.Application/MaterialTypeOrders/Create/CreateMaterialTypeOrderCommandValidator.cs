@@ -1,17 +1,18 @@
 ﻿using Flightware.Domain.Models;
 using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace Flightware.Application.MaterialTypeOrders.Create;
 
 public class CreateMaterialTypeOrderCommandValidator : AbstractValidator<CreateMaterialTypeOrderCommand>
 {
-    public CreateMaterialTypeOrderCommandValidator(IServiceProvider serviceProvider)
+    public CreateMaterialTypeOrderCommandValidator(IOptionsMonitor<List<MaterialType>> materialTypes)
     {
         RuleFor(command => command)
             .Custom((command, context) =>
             {
-                var materialType = serviceProvider.GetKeyedService<MaterialType>(command.MaterialType);
+                var materialType = materialTypes.CurrentValue
+                    .FirstOrDefault(materialType => materialType.Name == command.MaterialType);
                 if (materialType is null)
                 {
                     context.AddFailure(

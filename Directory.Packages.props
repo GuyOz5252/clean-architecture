@@ -14,6 +14,7 @@
     <PackageVersion Include="Mediator.Abstractions" Version="3.0.1" />
     <PackageVersion Include="Mediator.SourceGenerator" Version="3.0.1" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="9.0.9" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
     <PackageVersion Include="Scrutor" Version="6.1.0" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.9.0.115408" />
@@ -26,5 +27,6 @@
     <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.9.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.9" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+    <PackageVersion Include="Winton.Extensions.Configuration.Consul" Version="3.4.0" />
   </ItemGroup>
 </Project>
