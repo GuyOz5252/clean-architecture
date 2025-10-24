@@ -26,9 +26,9 @@ public class CreateMaterialTypeOrderCommandValidator : AbstractValidator<CreateM
                     .ToList()
                     .ForEach(parameter =>
                     {
-                        var found = materialType.OrderParameters.Select(orderParameters => orderParameters.Name)
+                        var exists = materialType.OrderParameters.Select(orderParameters => orderParameters.Name)
                             .Contains(parameter, StringComparer.OrdinalIgnoreCase);
-                        if (!found)
+                        if (!exists)
                         {
                             nonExistingParameters.Add(parameter);
                         }

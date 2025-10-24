@@ -1,4 +1,6 @@
 ﻿using Ardalis.Result;
+using Ardalis.Result.FluentValidation;
+using Flightware.Application.Validators;
 using FluentValidation;
 using Mediator;
 
@@ -12,7 +14,7 @@ public class ValidationPipelineBehavior<TMessage, TResponse> : IPipelineBehavior
 
     public ValidationPipelineBehavior(IEnumerable<IValidator<TMessage>> validators)
     {
-        _validators = validators;
+        _validators = validators.Where(validator => validator is not OrderValidatorBase);
     }
 
     public async ValueTask<TResponse> Handle(
@@ -34,10 +36,7 @@ public class ValidationPipelineBehavior<TMessage, TResponse> : IPipelineBehavior
         }
         
         var validationErrors = validationResults
-            .SelectMany(validationResult => validationResult.Errors)
-            .Select(validationFailure => new ValidationError(
-                validationFailure.PropertyName,
-                validationFailure.ErrorMessage))
+            .SelectMany(validationResult => validationResult.AsErrors())
             .DistinctBy(validationError => new { validationError.Identifier, validationError.ErrorMessage })
             .ToList();
 
@@ -53,6 +52,5 @@ public class ValidationPipelineBehavior<TMessage, TResponse> : IPipelineBehavior
             .Invoke(null, [validationErrors])!;
             
         return result as TResponse;
-
     }
 }
