@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <NoWarn>CA2016</NoWarn>
-        <NoWarn>ASP0000</NoWarn>
+        <NoWarn>ASP0000,CA1303</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

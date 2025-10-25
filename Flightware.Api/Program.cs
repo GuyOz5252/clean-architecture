@@ -1,7 +1,9 @@
+using System.Net.Http.Headers;
 using System.Reflection;
 using Common.Core.Abstract;
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using Flightware.Api.Configuration;
 using Flightware.Application.Pipeline;
 using Flightware.Domain.Abstract;
 using Flightware.Domain.Models;
@@ -11,10 +13,11 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Winton.Extensions.Configuration.Consul;
+using Winton.Extensions.Configuration.Consul.Parsers;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddConsul("Archive/MaterialTypes", options =>
+builder.Configuration.AddConsul("Archive/", options =>
 {
     options.ConsulConfigurationOptions = o =>
     {
@@ -23,55 +26,76 @@ builder.Configuration.AddConsul("Archive/MaterialTypes", options =>
     options.ReloadOnChange = true;
 });
 
+
 builder.Services.AddOptions<List<MaterialType>>()
-    .Bind(builder.Configuration.GetSection("MaterialTypes"));
-
-builder.AddServiceDefaults();
-builder.Services.AddMediator(options =>
-{
-    options.ServiceLifetime = ServiceLifetime.Scoped;
-    options.PipelineBehaviors = [typeof(ValidationPipelineBehavior<,>)];
-});
-builder.Services.AddValidatorsFromAssemblyContaining(typeof(ValidationPipelineBehavior<,>));
-builder.Services.Scan(selector => selector
-    .FromAssemblyDependencies(Assembly.GetExecutingAssembly())
-    .AddClasses(c => c.AssignableToAny(
-        typeof(IUserRepository),
-        typeof(IUnitOfWork)))
-    .AsImplementedInterfaces()
-    .WithScopedLifetime());
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    options.UseNpgsql(builder.Configuration.GetConnectionString("flightware"), builderOptions =>
+    .Configure<IConfiguration>((options, configuration) =>
     {
-        builderOptions.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+        options.Clear();
+        var section = configuration.GetSection("MaterialTypes");
+        options.AddRange(from materialSection in section.GetChildren()
+            let name = materialSection.Key
+            let orderParams = materialSection
+                                  .GetSection("OrderParameters")
+                                  .GetSection("OrderParameters")
+                                  .Get<List<OrderParameter>>()
+                              ?? throw new Exception()
+            select new MaterialType { Name = name, OrderParameters = orderParams });
     });
-});
-builder.Services.AddCors();
-builder.Services.AddAuthentication();
-builder.Services.AddAuthorization();
-builder.Services.AddFastEndpoints();
-builder.Services.SwaggerDocument(options => options.ShortSchemaNames = true);
 
-var app = builder.Build();
-
-app.MapServiceDefaults();
-app.UseCors();
-app.UseAuthentication();
-app.UseAuthorization();
-app.MapFastEndpoints(config =>
+var m = builder.Services.BuildServiceProvider().GetService<IOptionsMonitor<List<MaterialType>>>();
+while (true)
 {
-    config.Endpoints.RoutePrefix = "api";
-    config.Errors.UseProblemDetails();
-});
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseOpenApi();
-    app.UseSwaggerUI(options => options.DocumentTitle = "Flightware API");
-    using var scope = app.Services.CreateScope();
-    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    await dbContext.Database.MigrateAsync();
+    Console.WriteLine(nameof(RazorComponentsEndpointConventionBuilder));
+    Console.WriteLine(m?.CurrentValue[0].OrderParameters.Count);
+    await Task.Delay(TimeSpan.FromSeconds(1));
 }
 
-await app.RunAsync();
+// builder.AddServiceDefaults();
+// builder.Services.AddMediator(options =>
+// {
+//     options.ServiceLifetime = ServiceLifetime.Scoped;
+//     options.PipelineBehaviors = [typeof(ValidationPipelineBehavior<,>)];
+// });
+// builder.Services.AddValidatorsFromAssemblyContaining(typeof(ValidationPipelineBehavior<,>));
+// builder.Services.Scan(selector => selector
+//     .FromAssemblyDependencies(Assembly.GetExecutingAssembly())
+//     .AddClasses(c => c.AssignableToAny(
+//         typeof(IUserRepository),
+//         typeof(IUnitOfWork)))
+//     .AsImplementedInterfaces()
+//     .WithScopedLifetime());
+// builder.Services.AddDbContext<ApplicationDbContext>(options =>
+// {
+//     options.UseNpgsql(builder.Configuration.GetConnectionString("flightware"), builderOptions =>
+//     {
+//         builderOptions.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+//     });
+// });
+// builder.Services.AddCors();
+// builder.Services.AddAuthentication();
+// builder.Services.AddAuthorization();
+// builder.Services.AddFastEndpoints();
+// builder.Services.SwaggerDocument(options => options.ShortSchemaNames = true);
+//
+// var app = builder.Build();
+//
+// app.MapServiceDefaults();
+// app.UseCors();
+// app.UseAuthentication();
+// app.UseAuthorization();
+// app.MapFastEndpoints(config =>
+// {
+//     config.Endpoints.RoutePrefix = "api";
+//     config.Errors.UseProblemDetails();
+// });
+//
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseOpenApi();
+//     app.UseSwaggerUI(options => options.DocumentTitle = "Flightware API");
+//     using var scope = app.Services.CreateScope();
+//     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+//     await dbContext.Database.MigrateAsync();
+// }
+//
+// await app.RunAsync();

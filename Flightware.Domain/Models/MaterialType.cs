@@ -3,5 +3,5 @@
 public record MaterialType
 {
     public string Name { get; init; }
-    public List<OrderParameters> OrderParameters { get; init; }
+    public List<OrderParameter> OrderParameters { get; init; }
 }
