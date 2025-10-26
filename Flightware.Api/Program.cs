@@ -26,26 +26,28 @@ builder.Configuration.AddConsul("Archive/", options =>
     options.ReloadOnChange = true;
 });
 
+builder.Services.AddSingleton<IConfigureOptions<List<MaterialType>>, MaterialTypeConfigureOptions>();
+builder.Services.AddSingleton<IOptionsChangeTokenSource<List<MaterialType>>, ConfigurationChangeTokenSource<List<MaterialType>>>();
 
-builder.Services.AddOptions<List<MaterialType>>()
-    .Configure<IConfiguration>((options, configuration) =>
-    {
-        options.Clear();
-        var section = configuration.GetSection("MaterialTypes");
-        options.AddRange(from materialSection in section.GetChildren()
-            let name = materialSection.Key
-            let orderParams = materialSection
-                                  .GetSection("OrderParameters")
-                                  .GetSection("OrderParameters")
-                                  .Get<List<OrderParameter>>()
-                              ?? throw new Exception()
-            select new MaterialType { Name = name, OrderParameters = orderParams });
-    });
+// builder.Services.AddOptions<List<MaterialType>>()
+//     .Configure<IConfiguration>((options, configuration) =>
+//     {
+//         options.Clear();
+//         var section = configuration.GetSection("MaterialTypes");
+//         options.AddRange(from materialSection in section.GetChildren()
+//             let name = materialSection.Key
+//             let orderParams = materialSection
+//                                   .GetSection("OrderParameters")
+//                                   .GetSection("OrderParameters")
+//                                   .Get<List<OrderParameter>>()
+//                               ?? throw new Exception()
+//             select new MaterialType { Name = name, OrderParameters = orderParams });
+//     });
 
 var m = builder.Services.BuildServiceProvider().GetService<IOptionsMonitor<List<MaterialType>>>();
 while (true)
 {
-    Console.WriteLine(nameof(RazorComponentsEndpointConventionBuilder));
+    Console.WriteLine(nameof(MaterialType));
     Console.WriteLine(m?.CurrentValue[0].OrderParameters.Count);
     await Task.Delay(TimeSpan.FromSeconds(1));
 }

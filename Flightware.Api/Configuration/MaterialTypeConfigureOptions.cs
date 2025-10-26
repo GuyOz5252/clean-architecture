@@ -4,8 +4,9 @@ using Microsoft.Extensions.Primitives;
 
 namespace Flightware.Api.Configuration;
 
-public class MaterialTypeConfigureOptions : IConfigureOptions<List<MaterialType>>,
-    IOptionsChangeTokenSource<List<MaterialType>>
+public class MaterialTypeConfigureOptions :
+    IConfigureOptions<List<MaterialType>>
+    // IOptionsChangeTokenSource<List<MaterialType>>
 {
     private readonly IConfiguration _configuration;
 
@@ -19,7 +20,6 @@ public class MaterialTypeConfigureOptions : IConfigureOptions<List<MaterialType>
         options.Clear();
         var section = _configuration.GetSection("MaterialTypes");
         options.AddRange(from materialSection in section.GetChildren()
-            where materialSection is not null
             let name = materialSection.Key
             let orderParams = materialSection
                                   .GetSection("OrderParameters")
@@ -29,7 +29,7 @@ public class MaterialTypeConfigureOptions : IConfigureOptions<List<MaterialType>
             select new MaterialType { Name = name, OrderParameters = orderParams });
     }
 
-    public IChangeToken GetChangeToken() => _configuration.GetReloadToken();
-
-    public string Name => Options.DefaultName;
+    // public IChangeToken GetChangeToken() => _configuration.GetReloadToken();
+    //
+    // public string Name => Options.DefaultName;
 }
