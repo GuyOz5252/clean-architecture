@@ -1,4 +1,6 @@
-﻿namespace Flightware.Application.Users.Create;
+﻿using Flightware.Application.Messaging;
+
+namespace Flightware.Application.Users.Create;
 
 public record CreateUserCommand : ICommand<Guid>
 {

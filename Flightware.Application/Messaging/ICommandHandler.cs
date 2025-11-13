@@ -1,6 +1,6 @@
 ﻿using Ardalis.Result;
 
-namespace Flightware.Application;
+namespace Flightware.Application.Messaging;
 
 public interface ICommandHandler<in TCommand> : Mediator.ICommandHandler<TCommand, Result>
     where TCommand : ICommand;

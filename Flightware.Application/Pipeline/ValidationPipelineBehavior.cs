@@ -1,4 +1,5 @@
 ﻿using Ardalis.Result;
+using Ardalis.Result.FluentValidation;
 using FluentValidation;
 using Mediator;
 
@@ -34,10 +35,7 @@ public class ValidationPipelineBehavior<TMessage, TResponse> : IPipelineBehavior
         }
         
         var validationErrors = validationResults
-            .SelectMany(validationResult => validationResult.Errors)
-            .Select(validationFailure => new ValidationError(
-                validationFailure.PropertyName,
-                validationFailure.ErrorMessage))
+            .SelectMany(validationResult => validationResult.AsErrors())
             .DistinctBy(validationError => new { validationError.Identifier, validationError.ErrorMessage })
             .ToList();
 

@@ -1,5 +1,6 @@
 ﻿using Ardalis.Result;
 using Common.Core.Abstract;
+using Flightware.Application.Messaging;
 using Flightware.Domain.Abstract;
 using Flightware.Domain.Entities;
 

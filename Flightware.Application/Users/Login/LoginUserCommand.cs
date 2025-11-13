@@ -1,4 +1,5 @@
 ﻿using Mediator;
+using ICommand = Flightware.Application.Messaging.ICommand;
 
 namespace Flightware.Application.Users.Login;
 

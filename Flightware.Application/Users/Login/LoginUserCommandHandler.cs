@@ -1,4 +1,5 @@
 ﻿using Ardalis.Result;
+using Flightware.Application.Messaging;
 
 namespace Flightware.Application.Users.Login;
 
