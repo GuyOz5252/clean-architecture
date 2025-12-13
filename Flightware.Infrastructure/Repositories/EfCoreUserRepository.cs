@@ -3,11 +3,11 @@ using Flightware.Domain.Entities;
 
 namespace Flightware.Infrastructure.Repositories;
 
-public class EntityFrameworkUserRepository : IUserRepository
+public class EfCoreUserRepository : IUserRepository
 {
     private readonly ApplicationDbContext _dbContext;
 
-    public EntityFrameworkUserRepository(ApplicationDbContext dbContext)
+    public EfCoreUserRepository(ApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
     }

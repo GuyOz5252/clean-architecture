@@ -1,5 +1,5 @@
 ﻿using FastEndpoints;
-using Flightware.Api.Endpoints.Groups;
+using Flightware.Api.Groups;
 using Flightware.Application.Users.Create;
 using Mediator;
 

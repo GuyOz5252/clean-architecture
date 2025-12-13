@@ -3,11 +3,11 @@ using Common.Core.Abstract;
 
 namespace Flightware.Infrastructure;
 
-public class EntityFrameworkUnitOfWork : IUnitOfWork
+public class EfCoreUnitOfWork : IUnitOfWork
 {
     private readonly ApplicationDbContext _dbContext;
 
-    public EntityFrameworkUnitOfWork(ApplicationDbContext dbContext)
+    public EfCoreUnitOfWork(ApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
     }

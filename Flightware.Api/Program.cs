@@ -2,6 +2,7 @@ using System.Reflection;
 using Common.Core.Abstract;
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using Flightware.Api.Middlewares;
 using Flightware.Application.Pipeline;
 using Flightware.Domain.Abstract;
 using Flightware.Infrastructure;
@@ -33,6 +34,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     });
 });
 builder.Services.AddCors();
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<ProblemDetailsExceptionHandler>();
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 builder.Services.AddFastEndpoints();
@@ -41,6 +44,7 @@ builder.Services.SwaggerDocument(options => options.ShortSchemaNames = true);
 var app = builder.Build();
 
 app.MapServiceDefaults();
+app.UseExceptionHandler();
 app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();

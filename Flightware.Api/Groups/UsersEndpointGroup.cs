@@ -1,6 +1,6 @@
 ﻿using FastEndpoints;
 
-namespace Flightware.Api.Endpoints.Groups;
+namespace Flightware.Api.Groups;
 
 public sealed class UsersEndpointGroup : Group
 {
