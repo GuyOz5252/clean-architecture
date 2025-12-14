@@ -1,5 +1,5 @@
-﻿using Flightware.Domain.Abstract;
-using Flightware.Domain.Entities;
+﻿using ChatServer.Domain.Abstract;
+using ChatServer.Domain.Entities;
 
 namespace ChatServer.Infrastructure.Repositories;
 

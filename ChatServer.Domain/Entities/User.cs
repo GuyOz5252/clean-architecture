@@ -1,8 +1,8 @@
-﻿using Common.Core.Abstract;
+﻿using ChatServer.Domain.Abstract;
 
-namespace Flightware.Domain.Entities;
+namespace ChatServer.Domain.Entities;
 
-public class User : EntityBase, IAggregateRoot
+public class User : EntityBase
 {
     public string Username { get; init; }
     public string Email { get; init; }

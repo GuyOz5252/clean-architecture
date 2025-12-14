@@ -1,6 +1,6 @@
-﻿using Flightware.Domain.Entities;
+﻿using ChatServer.Domain.Entities;
 
-namespace Flightware.Domain.Abstract;
+namespace ChatServer.Domain.Abstract;
 
 public interface IUserRepository
 {

@@ -1,5 +1,5 @@
 ﻿using Ardalis.Result;
-using Common.Core.Abstract;
+using ChatServer.Domain.Abstract;
 
 namespace ChatServer.Infrastructure;
 

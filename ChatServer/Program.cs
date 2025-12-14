@@ -1,10 +1,9 @@
 using System.Reflection;
-using Common.Core.Abstract;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using ChatServer.Api.Middlewares;
 using ChatServer.Application.Pipeline;
-using Flightware.Domain.Abstract;
+using ChatServer.Domain.Abstract;
 using ChatServer.Infrastructure;
 using ChatServer.ServiceDefaults;
 using FluentValidation;

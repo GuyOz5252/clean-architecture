@@ -1,4 +1,4 @@
-﻿using Flightware.Domain.Entities;
+﻿using ChatServer.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChatServer.Infrastructure;

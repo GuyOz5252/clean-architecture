@@ -2,7 +2,6 @@
     
     <ItemGroup>
         <PackageReference Include="Ardalis.Result.FluentValidation" />
-        <PackageReference Include="Common.Core" />
         <PackageReference Include="FluentValidation" />
         <PackageReference Include="Mediator.Abstractions" />
     </ItemGroup>

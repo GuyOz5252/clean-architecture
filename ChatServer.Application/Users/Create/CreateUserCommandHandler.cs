@@ -1,8 +1,7 @@
 ﻿using Ardalis.Result;
 using ChatServer.Application.Messaging;
-using Common.Core.Abstract;
-using Flightware.Domain.Abstract;
-using Flightware.Domain.Entities;
+using ChatServer.Domain.Abstract;
+using ChatServer.Domain.Entities;
 
 namespace ChatServer.Application.Users.Create;
 
