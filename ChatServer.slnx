@@ -1,0 +1,20 @@
+<Solution>
+    <Folder Name="/aspire/">
+        <Project Path="ChatServer.AppHost/ChatServer.AppHost.csproj" />
+        <Project Path="ChatServer.ServiceDefaults/ChatServer.ServiceDefaults.csproj" />
+    </Folder>
+    <Folder Name="/Solution Items/">
+        <File Path=".editorconfig" />
+        <File Path=".gitignore" />
+        <File Path="Directory.Build.props" />
+        <File Path="Directory.Packages.props" />
+        <File Path="README.md" />
+    </Folder>
+    <Folder Name="/src/">
+        <Project Path="ChatServer.Api/ChatServer.Api.csproj" />
+        <Project Path="ChatServer.Application/ChatServer.Application.csproj" />
+        <Project Path="ChatServer.Domain/ChatServer.Domain.csproj" />
+        <Project Path="ChatServer.Infrastructure/ChatServer.Infrastructure.csproj" />
+        <Project Path="ChatServer/ChatServer.csproj" />
+    </Folder>
+</Solution>
