@@ -2,8 +2,8 @@
 
 namespace ChatServer.Application.Users.Login;
 
-public record LoginUserCommand : ICommand
+public record LoginUserCommand : ICommand<LoginResponse>
 {
-    public string Username { get; init; }
+    public string Email { get; init; }
     public string Password { get; init; }
 }

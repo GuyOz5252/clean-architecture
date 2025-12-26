@@ -9,11 +9,16 @@ public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, Guid>
 {
     private readonly IUserRepository _userRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IPasswordHasher _passwordHasher;
 
-    public CreateUserCommandHandler(IUserRepository userRepository, IUnitOfWork unitOfWork)
+    public CreateUserCommandHandler(
+        IUserRepository userRepository, 
+        IUnitOfWork unitOfWork,
+        IPasswordHasher passwordHasher)
     {
         _userRepository = userRepository;
         _unitOfWork = unitOfWork;
+        _passwordHasher = passwordHasher;
     }
 
     public async ValueTask<Result<Guid>> Handle(CreateUserCommand command, CancellationToken cancellationToken)
@@ -21,7 +26,10 @@ public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, Guid>
         var user = new User
         {
             Username = command.Username,
-            Email = command.Email
+            Email = command.Email,
+            DisplayName = command.DisplayName,
+            PasswordHash = _passwordHasher.Hash(command.Password),
+            Roles = ["User"]
         };
 
         var createdUser = await _userRepository.CreateAsync(user, cancellationToken);

@@ -1,4 +1,5 @@
-﻿using ChatServer.Api.Groups;
+﻿using Ardalis.Result.AspNetCore;
+using ChatServer.Api.Groups;
 using FastEndpoints;
 using ChatServer.Application.Users.Create;
 using Mediator;
@@ -22,13 +23,21 @@ public class CreateUserEndpoint : Endpoint<CreateUserRequest, CreateUserResponse
         {
             Username = createUserRequest.Username,
             Email = createUserRequest.Email,
-            Password = createUserRequest.Password
+            Password = createUserRequest.Password,
+            DisplayName = createUserRequest.DisplayName
         };
         var result = await Mediator.Send(command, ct);
-        await Send.OkAsync(new CreateUserResponse(result), ct);
+        
+        if (!result.IsSuccess)
+        {
+            await Send.ResultAsync(result.ToMinimalApiResult());
+            return;
+        }
+        
+        await Send.OkAsync(new CreateUserResponse(result.Value), ct);
     }
 }
 
-public record CreateUserRequest(string Username, string Email, string Password);
+public record CreateUserRequest(string Username, string Email, string Password, string DisplayName);
 
 public record CreateUserResponse(Guid Id);
