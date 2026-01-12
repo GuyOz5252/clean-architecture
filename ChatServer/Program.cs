@@ -82,13 +82,6 @@ builder.Services.SwaggerDocument(options =>
         s.DocumentName = "v1";
         s.Title = "ChatServer API";
         s.Version = "v1";
-        s.AddAuth("Bearer", new OpenApiSecurityScheme
-        {
-            Type = OpenApiSecuritySchemeType.Http,
-            Scheme = "bearer",
-            BearerFormat = "JWT",
-            Description = "Enter your JWT token"
-        });
     };
 });
 
