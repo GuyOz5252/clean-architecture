@@ -5,10 +5,13 @@
     </PropertyGroup>
     
     <ItemGroup>
+        <PackageReference Include="log4net" />
+        <PackageReference Include="log4net.Ext.Json" />
         <PackageReference Include="Mediator.SourceGenerator">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" />
         <PackageReference Include="Scrutor" />
         <PackageReference Include="Swashbuckle.AspNetCore" />
         <PackageReference Include="FastEndpoints.Swagger" />
