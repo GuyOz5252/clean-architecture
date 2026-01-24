@@ -1,11 +1,11 @@
 ﻿using Ardalis.Result;
 using ChatServer.Application.Messaging;
-using ChatServer.Domain.Abstract;
-using ChatServer.Domain.Entities;
+using ChatServer.Core.Abstract;
+using ChatServer.Core.Entities;
 
 namespace ChatServer.Application.Users.Create;
 
-public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, Guid>
+public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, string>
 {
     private readonly IUserRepository _userRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -21,7 +21,7 @@ public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, Guid>
         _passwordHasher = passwordHasher;
     }
 
-    public async ValueTask<Result<Guid>> Handle(CreateUserCommand command, CancellationToken cancellationToken)
+    public async ValueTask<Result<string>> Handle(CreateUserCommand command, CancellationToken cancellationToken)
     {
         var user = new User
         {

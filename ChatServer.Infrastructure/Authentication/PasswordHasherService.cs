@@ -1,5 +1,5 @@
-using ChatServer.Domain.Abstract;
-using ChatServer.Domain.Entities;
+using ChatServer.Core.Abstract;
+using ChatServer.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace ChatServer.Infrastructure.Authentication;

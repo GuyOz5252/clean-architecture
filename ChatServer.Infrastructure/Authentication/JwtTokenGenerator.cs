@@ -1,7 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using ChatServer.Domain.Abstract;
+using ChatServer.Core.Abstract;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -16,7 +16,7 @@ public class JwtTokenGenerator : ITokenGenerator
         _configuration = options.Value;
     }
 
-    public string Generate(Guid userId, string username, string email, List<string> roles)
+    public string Generate(string userId, string username, string email, List<string> roles)
     {
         var claims = new List<Claim>
         {

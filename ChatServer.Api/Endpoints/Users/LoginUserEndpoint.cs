@@ -49,7 +49,7 @@ public record LoginUserRequest(string Email, string Password);
 
 public record LoginUserResponse(
     string Token,
-    Guid UserId,
+    string UserId,
     string Username,
     string Email,
     List<string> Roles

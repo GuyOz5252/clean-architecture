@@ -1,6 +1,6 @@
 using System.Reflection;
 using System.Text;
-using ChatServer.Domain.Abstract;
+using ChatServer.Core.Abstract;
 using ChatServer.Infrastructure.Authentication;
 using FastEndpoints;
 using FastEndpoints.Swagger;

@@ -13,7 +13,7 @@
     <Folder Name="/src/">
         <Project Path="ChatServer.Api/ChatServer.Api.csproj" />
         <Project Path="ChatServer.Application/ChatServer.Application.csproj" />
-        <Project Path="ChatServer.Domain/ChatServer.Domain.csproj" />
+        <Project Path="ChatServer.Core/ChatServer.Core.csproj" />
         <Project Path="ChatServer.Infrastructure/ChatServer.Infrastructure.csproj" />
         <Project Path="ChatServer/ChatServer.csproj" />
     </Folder>

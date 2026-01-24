@@ -1,6 +1,6 @@
 ﻿using Ardalis.Result;
-using ChatServer.Domain.Abstract;
-using ChatServer.Domain.Entities;
+using ChatServer.Core.Abstract;
+using ChatServer.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChatServer.Infrastructure.Repositories;

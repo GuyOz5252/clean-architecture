@@ -1,9 +1,8 @@
-﻿using ChatServer.Domain.Abstract;
+﻿namespace ChatServer.Core.Entities;
 
-namespace ChatServer.Domain.Entities;
-
-public class User : EntityBase
+public class User
 {
+    public string Id { get; init; }
     public string Username { get; init; }
     public string Email { get; init; }
     public string DisplayName { get; init; }

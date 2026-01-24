@@ -9,7 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ChatServer.Domain\ChatServer.Domain.csproj" />
+      <ProjectReference Include="..\ChatServer.Core\ChatServer.Core.csproj" />
     </ItemGroup>
 
 </Project>

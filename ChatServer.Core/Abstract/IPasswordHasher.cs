@@ -1,4 +1,4 @@
-namespace ChatServer.Domain.Abstract;
+namespace ChatServer.Core.Abstract;
 
 public interface IPasswordHasher
 {

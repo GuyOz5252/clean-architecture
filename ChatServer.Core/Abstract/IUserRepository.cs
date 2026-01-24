@@ -1,7 +1,7 @@
 ﻿using Ardalis.Result;
-using ChatServer.Domain.Entities;
+using ChatServer.Core.Entities;
 
-namespace ChatServer.Domain.Abstract;
+namespace ChatServer.Core.Abstract;
 
 public interface IUserRepository
 {

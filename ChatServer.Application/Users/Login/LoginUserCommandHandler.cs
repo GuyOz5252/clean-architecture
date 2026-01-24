@@ -1,6 +1,6 @@
 ﻿using Ardalis.Result;
 using ChatServer.Application.Messaging;
-using ChatServer.Domain.Abstract;
+using ChatServer.Core.Abstract;
 
 namespace ChatServer.Application.Users.Login;
 

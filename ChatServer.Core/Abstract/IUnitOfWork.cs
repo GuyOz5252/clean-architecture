@@ -1,6 +1,6 @@
 ﻿using Ardalis.Result;
 
-namespace ChatServer.Domain.Abstract;
+namespace ChatServer.Core.Abstract;
 
 public interface IUnitOfWork
 {

@@ -28,7 +28,7 @@
     <ItemGroup>
       <ProjectReference Include="..\ChatServer.Api\ChatServer.Api.csproj" />
       <ProjectReference Include="..\ChatServer.Application\ChatServer.Application.csproj" />
-      <ProjectReference Include="..\ChatServer.Domain\ChatServer.Domain.csproj" />
+      <ProjectReference Include="..\ChatServer.Core\ChatServer.Core.csproj" />
       <ProjectReference Include="..\ChatServer.Infrastructure\ChatServer.Infrastructure.csproj" />
       <ProjectReference Include="..\ChatServer.ServiceDefaults\ChatServer.ServiceDefaults.csproj" />
     </ItemGroup>

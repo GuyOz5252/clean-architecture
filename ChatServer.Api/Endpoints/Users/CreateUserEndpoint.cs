@@ -40,4 +40,4 @@ public class CreateUserEndpoint : Endpoint<CreateUserRequest, CreateUserResponse
 
 public record CreateUserRequest(string Username, string Email, string Password, string DisplayName);
 
-public record CreateUserResponse(Guid Id);
+public record CreateUserResponse(string Id);

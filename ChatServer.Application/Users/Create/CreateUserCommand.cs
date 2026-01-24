@@ -2,7 +2,7 @@
 
 namespace ChatServer.Application.Users.Create;
 
-public record CreateUserCommand : ICommand<Guid>
+public record CreateUserCommand : ICommand<string>
 {
     public string Username { get; init; }
     public string Email { get; init; }

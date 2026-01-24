@@ -25,7 +25,7 @@ namespace ChatServer.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ChatServer.Domain.Entities.User", b =>
+            modelBuilder.Entity("ChatServer.Core.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
