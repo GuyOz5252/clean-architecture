@@ -9,6 +9,7 @@
         <File Path="Directory.Build.props" />
         <File Path="Directory.Packages.props" />
         <File Path="README.md" />
+        <File Path="filebeat.yml" />
     </Folder>
     <Folder Name="/src/">
         <Project Path="ChatServer.Api/ChatServer.Api.csproj" />

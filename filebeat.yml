@@ -1,0 +1,18 @@
+filebeat.inputs:
+  - type: filestream
+    id: chatserver-logs
+    paths:
+      - /app/logs/*.log
+    parsers:
+      - ndjson:
+          keys_under_root: true
+          overwrite_keys: true
+          add_error_key: true
+
+output.elasticsearch:
+  hosts: ['http://elasticsearch:9200']
+  username: 'elastic'
+  password: 'Password1'
+
+setup.kibana:
+  host: 'http://kibana:5601'
